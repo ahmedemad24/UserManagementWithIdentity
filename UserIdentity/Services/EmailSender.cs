@@ -22,9 +22,11 @@ namespace UserIdentity.Services
             message.Body = $"<html><body>{htmlMessage}</body></html>";
             message.IsBodyHtml = true;
 
-            var smtpClient = new SmtpClient(host: "smtp.gmail.com")
+            var smtpClient = new SmtpClient()
             {
+                Host = "smtp.gmail.com",
                 Port = 587,
+                UseDefaultCredentials = false,
                 Credentials = new NetworkCredential(fromMail, fromPassword),
                 EnableSsl = true,
             };
